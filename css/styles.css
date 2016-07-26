@@ -1,0 +1,29 @@
+body{
+    margin: 0;
+    text-align: center;
+}
+
+canvas{
+    border: solid;
+}
+
+#titulo{
+    color: red;
+    font-family: Gameplay;
+    font-size: 73px;
+    margin: 0;
+    text-shadow: 6px 6px 5px #181818;
+    transition: .3s;
+    display: inline-block;
+}
+
+#titulo:hover{
+    color: blue;
+    transition: .3s;
+}
+
+#credito{
+    display: inline-block;
+    margin: 0 0 0 30px;
+    font-family: roboto;
+}
