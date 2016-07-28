@@ -2,6 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=decive-width", user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1,>
         <link rel="stylesheet" href="css/styles.css">
     <title>Naves</title>
     </head>
@@ -9,9 +10,41 @@
         <p id="titulo">Game Over v-0.5</p>
         <p id="credito">By: Miguel Buelna</p>
     </header>
-    <body>
+    <body>   
         <canvas id="game" width="910px" height="580px"></canvas>
+        <section id="botones">
+           <span class="izq">
+               <img src="images/flechas/arrow.png" alt="left" id="left" class="btn">
+           </span>
+           <span class="der">
+               <img src="images/flechas/arrow.png" alt="right" id="right" class="btn">
+           </span>
+        </section> 
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="js/flechas.js"></script>
         <script src="js/preloadjs-0.6.2.min.js"></script>
         <script src="js/main.js"></script>
+            <script>
+                var Preloader;
+                var imagenes = ['images/background.jpg','images/bueno.png','images/disparo.png','images/disparoEnemigo.png','images/enemigo.png'];
+                window.addEventListener('load', function(){
+                    Preloader = new PreloadJS();
+                    Preloader.onProgress = progresoCarga();
+                    cargar();
+                }):
+                function cargar(){
+                    while(imagenes.length > 0){
+                        var url = imagenes.shift();
+                        Preloader.loadFile(url);
+                    }
+                }
+                function progresoCarga(){
+                    console.log(parseInt(Preloader.progress * 100)+"%");
+                    if(Preloader.progress == 1){
+                        var intervalo = window.setInterval(frameLoop,1000/55);
+                    }
+                    }
+                }
+            </script>
     </body>
 </html>

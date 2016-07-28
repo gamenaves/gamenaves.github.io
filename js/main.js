@@ -30,7 +30,6 @@ var disparosEnemigos = [];
 var enemigos = [];
 //Definir variables para las imágenes
 var fondo,imgBueno,imgDisparo,imgDisparoEnemigo,imgEnemigo;
-var imagenes = ['images/background.jpg','images/bueno.png','images/disparo.png','images/disparoEnemigo.png','images/enemigo.png'];
 
 //Definicion de funciones
 function loadMedia(){
