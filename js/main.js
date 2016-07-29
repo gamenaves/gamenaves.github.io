@@ -9,7 +9,7 @@ var bueno = {
     width: 50,
     height: 50,
     contador: 0
-}
+};
 
 var juego = {
     estado: 'iniciando'
@@ -19,7 +19,7 @@ var textoRespuesta = {
     contador: -1,
     titulo: '',
     subtitulo: ''
-}
+};
 
 var teclado = {};
 
@@ -29,22 +29,38 @@ var disparosEnemigos = [];
 //Array que almacena los enemigos
 var enemigos = [];
 //Definir variables para las imágenes
-var fondo,imgBueno,imgDisparo,imgDisparoEnemigo,imgEnemigo;
+var fondo, imgBueno, imgDisparo, imgDisparoEnemigo, imgEnemigo;
+var imagenes = ['images/background.jpg','images/bueno.png','images/disparo.png','images/disparoEnemigo.png','images/enemigo.png'];
+var preloader;
 
 //Definicion de funciones
-function loadMedia(){
-    fondo = new Image();
-    fondo.src = 'images/background.jpg';
-    imgBueno = new Image();
-    imgBueno.src = 'images/bueno.png';
-    imgDisparo = new Image();
-    imgDisparo.src = 'images/disparo.png';
-    imgDisparoEnemigo = new Image();
-    imgDisparoEnemigo.src = 'images/disparoEnemigo.png';
-    imgEnemigo = new Image();
-    imgEnemigo.src = 'images/enemigo.png';
-    fondo.onload = function(){
-        var intervalo = window.setInterval(frameLoop,1000/55);
+function loadMedia() {
+    preloader = new PreloadJS();
+    preloader.onProgress = progresoCarga;
+    cargar();
+}
+
+function cargar() {
+    while (imagenes.length > 0) {
+        var imagen = imagenes.shift();
+        preloader.loadFile(imagen);
+    }
+}
+
+function progresoCarga() {
+    console.log(parseInt(preloader.progress * 100) + "%");
+    if (preloader.progress == 1){
+        var interval = window.setInterval(frameLoop,1000/45);
+        fondo = new Image();
+        fondo.src = 'images/background.jpg';
+        imgBueno = new Image();
+        imgBueno.src = 'images/bueno.png';
+        imgDisparo = new Image();
+        imgDisparo.src = 'images/disparo.png';
+        imgDisparoEnemigo = new Image();
+        imgDisparoEnemigo.src = 'images/disparoEnemigo.png';
+        imgEnemigo = new Image();
+        imgEnemigo.src = 'images/enemigo.png';
     }
 }
 

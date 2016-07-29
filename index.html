@@ -7,7 +7,7 @@
     <title>Naves</title>
     </head>
     <header>
-        <p id="titulo">Game Over v-0.5</p>
+        <p id="titulo">Game Over v-0.7</p>
         <p id="credito">By: Miguel Buelna</p>
     </header>
     <body>   
@@ -21,30 +21,8 @@
            </span>
         </section> 
         <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="js/preloadjs-0.1.0.min.js"></script>
         <script src="js/flechas.js"></script>
-        <script src="js/preloadjs-0.6.2.min.js"></script>
         <script src="js/main.js"></script>
-            <script>
-                var Preloader;
-                var imagenes = ['images/background.jpg','images/bueno.png','images/disparo.png','images/disparoEnemigo.png','images/enemigo.png'];
-                window.addEventListener('load', function(){
-                    Preloader = new PreloadJS();
-                    Preloader.onProgress = progresoCarga();
-                    cargar();
-                }):
-                function cargar(){
-                    while(imagenes.length > 0){
-                        var url = imagenes.shift();
-                        Preloader.loadFile(url);
-                    }
-                }
-                function progresoCarga(){
-                    console.log(parseInt(Preloader.progress * 100)+"%");
-                    if(Preloader.progress == 1){
-                        var intervalo = window.setInterval(frameLoop,1000/55);
-                    }
-                    }
-                }
-            </script>
     </body>
 </html>
