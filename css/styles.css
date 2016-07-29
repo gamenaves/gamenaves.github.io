@@ -5,6 +5,8 @@ body{
 
 canvas{
     border: solid;
+    box-shadow: 8px 8px 5px #181818;
+    margin: 0;
 }
 
 #titulo{
@@ -26,49 +28,4 @@ canvas{
     display: inline-block;
     margin: 0 0 0 30px;
     font-family: roboto;
-}
-
-.btn{
-    margin: 20px;
-    display: none;
-}
-
-#left{
-    transform: rotate(270deg);
-}
-
-#right{
-    transform: rotate(90deg);
-}
-
-@media screen and (max-width: 700px)
-{
-    .btn{
-        display: inline-flex;
-    }
-    
-    #left{
-        transform: rotate(180deg);
-    }
-    
-    #right{
-        transform: rotate(0deg);
-    }
-    
-    #titulo{
-        display: none;
-    }
-    
-    #credito{
-        display: none;
-    }
-    
-    canvas{
-        transform: rotate(90deg);
-        width: 700px;
-        height: 550px;
-        margin: 0 auto;
-        top: 200px;
-    }
-    
 }

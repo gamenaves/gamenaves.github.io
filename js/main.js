@@ -31,6 +31,7 @@ var enemigos = [];
 //Definir variables para las imágenes
 var fondo, imgBueno, imgDisparo, imgDisparoEnemigo, imgEnemigo;
 var imagenes = ['images/background.jpg','images/bueno.png','images/disparo.png','images/disparoEnemigo.png','images/enemigo.png'];
+var sDisparo, sMuerte, sMuerteE;
 var preloader;
 
 //Definicion de funciones
@@ -50,7 +51,7 @@ function cargar() {
 function progresoCarga() {
     console.log(parseInt(preloader.progress * 100) + "%");
     if (preloader.progress == 1){
-        var interval = window.setInterval(frameLoop,1000/45);
+        var interval = window.setInterval(frameLoop,1000/40);
         fondo = new Image();
         fondo.src = 'images/background.jpg';
         imgBueno = new Image();
@@ -61,6 +62,9 @@ function progresoCarga() {
         imgDisparoEnemigo.src = 'images/disparoEnemigo.png';
         imgEnemigo = new Image();
         imgEnemigo.src = 'images/enemigo.png';
+        sDisparo = document.createElement('audio');
+        document.body.appendChild(sDisparo);
+        sDisparo.setAttribute('src','sound/disparo.mp3');
     }
 }
 
@@ -69,7 +73,6 @@ function dibujarEnemigos(){
         var enemigo = enemigos[i];
         ctx.save();
         if(enemigo.estado == 'vivo') ctx.fillStyle = 'red';
-        if(enemigo.estado == 'muerto') ctx.fillStyle = 'black';
         ctx.drawImage(imgEnemigo,enemigo.x, enemigo.y, enemigo.width, enemigo.height);
     }
 }
@@ -194,7 +197,7 @@ function actualizaEnemigos(){
         }
         if(enemigo && enemigo.estado == 'hit'){
             enemigo.contador++;
-            if(enemigo.contador >= 16){
+            if(enemigo.contador >= 10){
                 enemigo.estado = 'muerto';
                 enemigo.contador = 0;
             }
@@ -217,6 +220,9 @@ function moverDisparos(){
 }
 
 function fire(){
+    sDisparo.pause();
+    sDisparo.currentTime = 0;
+    sDisparo.play();
     disparos.push({
        x: bueno.x + 20,
        y: bueno.y - 10,
