@@ -96,7 +96,7 @@ function agregarEventosTeclado(){
         //Ponemos en falso la tecla que dejo de ser presionada
         teclado[e.keyCode] = false;
     });
-    
+
     function agregarEvento(elemento,nombreEvento,funcion){
         if(elemento.addEventListener){
             //Navegadores de verdad
@@ -113,13 +113,13 @@ function moverBueno(){
     if(teclado[37]){
         //Movimiento a la izquiera
         bueno.x -= 8;
-        if(bueno.x < 0) bueno.x = 0; 
+        if(bueno.x < 0) bueno.x = 0;
     }
     if(teclado[39]){
         //Movimiento a la derecha
         var limite = canvas.width - bueno.width;
         bueno.x += 8;
-        if(bueno.x > limite) bueno.x = limite; 
+        if(bueno.x > limite) bueno.x = limite;
     }
     if(teclado[32]){
         //Disparos
@@ -157,7 +157,7 @@ function moverDisparosEnemigos(){
         disparo.y += 3;
     }
     disparosEnemigos = disparosEnemigos.filter(function(disparo){
-        return disparo.y < canvas.height; 
+        return disparo.y < canvas.height;
     });
 }
 
@@ -190,7 +190,7 @@ function actualizaEnemigos(){
         if(enemigo && enemigo.estado == 'vivo'){
             enemigo.contador++;
             enemigo.x += Math.sin(enemigo.contador * Math.PI / 90) * 5;
-            
+
             if(aleatorio(0,enemigos.length * 10) == 4){
                 disparosEnemigos.push(agregarDisparosEnemigos(enemigo));
             }
@@ -226,8 +226,8 @@ function fire(){
     disparos.push({
        x: bueno.x + 20,
        y: bueno.y - 10,
-       width: 10,    
-       height: 30    
+       width: 10,
+       height: 30
     });
 }
 
@@ -300,7 +300,7 @@ function hit(a,b){
         if(a.y <= b.y && a.y + a.height >= b.y + b.height){
             hit = true;
         }
-    }    
+    }
     return hit;
 }
 
